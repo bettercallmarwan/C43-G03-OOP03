@@ -151,9 +151,9 @@ public class Duration
 {
     #region 1-Define Class Duration To include Three Attributes Hours, Minutes and Seconds.
 
-    private int hours;
-    private int minutes;
-    private int seconds;
+    private readonly int hours;
+    private readonly int minutes;
+    private readonly int seconds;
 
     
     #endregion
@@ -190,6 +190,7 @@ public class Duration
         seconds %= 60;
 
         this.seconds = seconds;
+
     }
     #endregion
 
@@ -243,28 +244,23 @@ namespace Assignment_3
     {
         static void Main(string[] args)
         {
-            Duration d1 = new Duration(0, 0, 0);
-            Duration d2 = new Duration(3, 38, 3);
+            Duration d1 = new Duration(0, 1, 0);
+            Duration d2 = new Duration(1, 0, 3);
 
-            //Console.WriteLine(d1.Equals(d2));
+            Console.WriteLine(d1.Equals(d2));
 
-            //Console.WriteLine(d1.GetHashCode());
-            //Console.WriteLine(d2.GetHashCode());
+            Console.WriteLine(d1.GetHashCode());
+            Console.WriteLine(d2.GetHashCode());
 
-            //Duration d3 = d1 + d2;
-            //Console.WriteLine(d3);
+            Duration d3 = d1 + d2;
+            Console.WriteLine(d3);
 
-            //Console.WriteLine(d1 + 3600);
-            if(d1)
+            Console.WriteLine(d1 + 3600);
+            if (d1)
                 Console.WriteLine("hi");
 
             DateTime dt = (DateTime)d2;
             Console.WriteLine(dt);
-
-
-
-
-
         }
     }
 }
