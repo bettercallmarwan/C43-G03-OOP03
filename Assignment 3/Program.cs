@@ -164,9 +164,8 @@ public class Duration
 
     public override int GetHashCode()
     {
-        string s = string.Concat(hours, minutes, seconds);
-        int ans = Convert.ToInt32(s);
-        return ans;
+        string s = $"{hours:D2}{minutes:D2}{seconds:D2}";
+        return int.TryParse(s, out int ans) ? ans : 0; 
     }
 
     #region 3-Define All Required Constructors to Produce this output:
@@ -176,7 +175,8 @@ public class Duration
     }
     public Duration(int hours, int minutes, int seconds)
     {
-        if(this.hours < 0 || this.minutes < 0 || this.seconds < 0)
+
+        if (this.hours < 0 || this.minutes < 0 || this.seconds < 0)
             throw new Exception("Invalid Input");
 
         this.hours = hours;
@@ -186,7 +186,7 @@ public class Duration
 
     public Duration(int seconds)
     {
-        if(this.seconds < 0)
+        if (this.seconds < 0)
             throw new Exception("Invalid Input");
 
         this.hours = seconds / 3600;
@@ -196,7 +196,6 @@ public class Duration
         seconds %= 60;
 
         this.seconds = seconds;
-
     }
     #endregion
 
@@ -253,8 +252,12 @@ namespace Assignment_3
     {
         static void Main(string[] args)
         {
-            Duration d1 = new Duration(0, 1, 0);
+            Duration d1 = new Duration(0, 0, 50);
             Duration d2 = new Duration(1, 0, 3);
+
+            Console.WriteLine(d1);
+
+            d2 = d1--;
 
             Console.WriteLine(d1.Equals(d2));
 
