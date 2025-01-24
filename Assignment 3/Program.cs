@@ -176,7 +176,7 @@ public class Duration
     }
     public Duration(int hours, int minutes, int seconds)
     {
-        if(this.hours < 0 || this.hours < 0 || this.seconds < 0)
+        if(this.hours < 0 || this.minutes < 0 || this.seconds < 0)
             throw new Exception("Invalid Input");
 
         this.hours = hours;
