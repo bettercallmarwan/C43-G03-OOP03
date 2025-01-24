@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
+using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
 #region part 01
 
@@ -206,6 +206,9 @@ public class Duration
         => new Duration(toSeconds(a) - toSeconds(b));
 
     public static Duration operator +(Duration a, int sec)
+        => new Duration(toSeconds(a) + sec);
+
+    public static Duration operator +(int sec, Duration a)
         => new Duration(toSeconds(a) + sec);
 
     public static Duration operator ++(Duration a)
