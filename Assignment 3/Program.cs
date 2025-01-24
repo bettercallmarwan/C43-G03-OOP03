@@ -155,7 +155,7 @@ public class Duration
     private readonly int minutes;
     private readonly int seconds;
 
-    
+
     #endregion
 
     public override string ToString() => $"{hours}:{minutes}:{seconds}";
@@ -172,10 +172,13 @@ public class Duration
     #region 3-Define All Required Constructors to Produce this output:
     public Duration()
     {
-        
+
     }
     public Duration(int hours, int minutes, int seconds)
     {
+        if(this.hours < 0 || this.hours < 0 || this.seconds < 0)
+            throw new Exception("Invalid Input");
+
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
@@ -183,6 +186,9 @@ public class Duration
 
     public Duration(int seconds)
     {
+        if(this.seconds < 0)
+            throw new Exception("Invalid Input");
+
         this.hours = seconds / 3600;
         seconds %= 3600;
 
@@ -199,7 +205,7 @@ public class Duration
     // Helper function
     private static int toSeconds(Duration a) => a.hours * 3600 + a.minutes * 60 + a.seconds;
 
-    public static Duration operator +(Duration a, Duration b) 
+    public static Duration operator +(Duration a, Duration b)
         => new Duration(toSeconds(a) + toSeconds(b));
 
     public static Duration operator -(Duration a, Duration b)
